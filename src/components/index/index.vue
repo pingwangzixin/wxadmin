@@ -8,6 +8,7 @@
 			<el-table-column prop="address" label="地址">
 			</el-table-column>
 		</el-table>
+		
 		<!-- 分页 -->
 		<div v-show="!listLoading" class="pagination-container" style="margin-top:20px;">
 			<el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page.sync="listQuery.page"
