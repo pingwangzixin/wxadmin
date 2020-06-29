@@ -20,7 +20,7 @@ npm run build --report
 
 # 接口写在interface.js文件中
 调用接口
-this.$http.post(this.url.intreface.getUserList,this.listQuery).then(function(res){
+this.$http.post(this.url.getUserList,this.listQuery).then(function(res){
 	console.log(res)
 })
 ```

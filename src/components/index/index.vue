@@ -53,7 +53,7 @@
 		},
 		methods:{
 			getUserList(){
-				this.$http.post(this.url.intreface.getUserList,this.listQuery).then(function(res){
+				this.$http.post(this.url.getUserList,this.listQuery).then(function(res){
 					console.log(res)
 				})
 			}
@@ -61,7 +61,7 @@
 		created(){
 			var that=this
 			that.getUserList()
-			console.log(this.url.intreface)
+			console.log(this.url.getUserList)
 		}
 	}
 </script>

@@ -13,7 +13,6 @@ Vue.prototype.url=interFace;
 Vue.config.productionTip = false
 Vue.prototype.$http=axios;
 Vue.use(ElementUI);
-Vue.use(interFace);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
