@@ -18,4 +18,11 @@ npm run build
 npm run build --report
 ```
 
+# 接口写在interface.js文件中
+调用接口
+this.$http.post(this.url.intreface.getUserList,this.listQuery).then(function(res){
+	console.log(res)
+})
+```
+
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

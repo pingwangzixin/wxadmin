@@ -24,7 +24,7 @@
 
 <script>
 	import { baseUrl } from '@/utils/baseUrl'
-	import { intreface } from '@/utils/interface'
+	// import { intreface } from '@/utils/interface'
 	export default {
 		data() {
 			return {
@@ -53,7 +53,7 @@
 		},
 		methods:{
 			getUserList(){
-				this.$http.post(intreface().getUserList,this.listQuery).then(function(res){
+				this.$http.post(this.url.intreface.getUserList,this.listQuery).then(function(res){
 					console.log(res)
 				})
 			}
@@ -61,6 +61,7 @@
 		created(){
 			var that=this
 			that.getUserList()
+			console.log(this.url.intreface)
 		}
 	}
 </script>

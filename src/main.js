@@ -7,10 +7,13 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
 import './assets/reset.css';
+import interFace from "./utils/interface.js"
 
+Vue.prototype.url=interFace;
 Vue.config.productionTip = false
 Vue.prototype.$http=axios;
 Vue.use(ElementUI);
+Vue.use(interFace);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
