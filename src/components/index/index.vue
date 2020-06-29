@@ -25,6 +25,7 @@
 					page: 1,
 					rows: 20,
 				},
+				listLoading:false,
 				total: 100,
 				tableData: [{
 					date: '2016-05-02',
