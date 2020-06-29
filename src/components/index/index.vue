@@ -23,8 +23,6 @@
 </template>
 
 <script>
-	import { baseUrl } from '@/utils/baseUrl'
-	// import { intreface } from '@/utils/interface'
 	export default {
 		data() {
 			return {
