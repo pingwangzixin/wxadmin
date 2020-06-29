@@ -1,6 +1,6 @@
 # vueAdmin
 
-> A Vue.js project
+> 基于vue-cli的后台管理项目
 
 ## Build Setup
 
