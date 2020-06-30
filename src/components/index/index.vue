@@ -49,9 +49,9 @@
 		},
 		methods: {
 			getUserList() {
-				this.$http.post(this.url.getUserList, this.listQuery).then(function(res) {
-					console.log(res)
-				})
+				// this.$http.post(this.url.getUserList, this.listQuery).then(function(res) {
+				// 	console.log(res)
+				// })
 			},
 			handleSizeChange(val) {
 				console.log(`每页 ${val} 条`);
