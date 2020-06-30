@@ -1,5 +1,5 @@
 const state = {
-  userId: '',
+  userId: '123456',
 };
 var copyState = deepClone(state); // 拷贝state对象
 function deepClone(obj) {
