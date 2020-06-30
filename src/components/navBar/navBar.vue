@@ -2,18 +2,6 @@
 	<div>
 		<div class="navBar">
 			<div>
-				<!-- <el-menu router :default-active="activeIndex" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
-				    <el-submenu index="1">
-				        <template slot="title">
-				          <i class="el-icon-location"></i>
-				          <span>wxAdmin</span>
-				        </template>
-				        <el-menu-item-group>
-				          <el-menu-item index="/index">表格</el-menu-item>
-				          <el-menu-item index="/icon">icon</el-menu-item>
-				        </el-menu-item-group>
-				    </el-submenu>
-				</el-menu> -->
 				<el-menu :default-active="this.$router.path" router class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
 					 <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name">
 					  {{item.navItem}}
@@ -37,6 +25,7 @@
 					{name:'/index',navItem:'表格'},
 				    {name:'/icon',navItem:'icon'},
 				    {name:'/echarts',navItem:'echarts'},
+					{name:'/vuex',navItem:'vuex'},
 				]
 			}
 		},

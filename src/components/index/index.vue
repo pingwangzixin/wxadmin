@@ -19,7 +19,6 @@
 </template>
 
 <script>
-	import { mapState } from "vuex";
 	export default {
 		data() {
 			return {
@@ -53,7 +52,6 @@
 				// this.$http.post(this.url.getUserList, this.listQuery).then(function(res) {
 				// 	console.log(res)
 				// })
-				console.log(this.userId)
 			},
 			handleSizeChange(val) {
 				console.log(`每页 ${val} 条`);
@@ -65,12 +63,7 @@
 		created() {
 			var that = this
 			that.getUserList()
-		},
-		computed: {
-			...mapState({
-				userId: state => state.state.userId,
-			})
-		},
+		}
 	}
 </script>
 
