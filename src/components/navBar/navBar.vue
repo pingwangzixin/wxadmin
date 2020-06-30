@@ -13,7 +13,7 @@
 				      <el-submenu index="1">
 				        <template slot="title">
 				          <i class="el-icon-location"></i>
-				          <span>导航一</span>
+				          <span>wxAdmin</span>
 				        </template>
 				        <el-menu-item-group>
 				          <template slot="title">分组一</template>
