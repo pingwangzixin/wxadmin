@@ -15,11 +15,16 @@ export default new Router({
 	      component: resolve => require(['@/components/index/index'], resolve), 
 	      name: '首页',
 	    },
-		{
-		  path: 'icon',
-		  component: resolve => require(['@/components/icon/icon'], resolve), 
-		  name: 'icon',
-		},
+			{
+				path: 'icon',
+				component: resolve => require(['@/components/icon/icon'], resolve), 
+				name: 'icon',
+			},
+			{
+				path: 'echarts',
+				component: resolve => require(['@/components/echarts/echarts'], resolve), 
+				name: 'echarts',
+			},
 	  ],
 	  redirect: '/index'
     },
