@@ -100,7 +100,7 @@
 	        justify-content: center;
 	        align-items: center;
 	        flex-direction: column;
-	        width:25%;
+	        width:10%;
 	        padding-top: 10px;
 	        padding-bottom: 10px;
 			border-right: 1px solid #eee;
@@ -108,6 +108,9 @@
 			margin-right: -1px;
 			margin-bottom: -1px;
 	    }
+		.sudoku_item i{
+			margin-bottom: 10px;
+		}
 	    .opacity{
 	        opacity: 0.4;
 	        background: #e5e5e5;
