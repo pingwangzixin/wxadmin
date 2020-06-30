@@ -12,7 +12,7 @@ import { loadStyle } from './utils/baseUrl.js' //创建阿里小图标的方法
 import { iconfontUrl,iconfontVersion } from '@/config/env'; //引入阿里小图标的库
 
 Vue.prototype.url=interFace;
-Vue.config.productionTip = false
+Vue.config.productionTip = false //阻止启动生产消息
 Vue.prototype.$http=axios;
 
 // 动态加载阿里云字体库
