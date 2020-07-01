@@ -1,12 +1,15 @@
 <template>
-	<div style="width: 800px;text-align: left;">
+	<div style="width: 800px;text-align: left;position: relative;">
 		<div>
 		  <el-input placeholder="请输入内容" v-model="input1">
 		    <template slot="prepend">标题</template>
 		  </el-input>
+		  
 		</div>
-		<quill-editor ref="text" v-model="content" class="myQuillEditor" :options="editorOption"  style="height:600px;"/>
-		<!-- <el-button type="primary" @click="submit">提交</el-button> -->
+		<quill-editor ref="text" v-model="content" class="myQuillEditor" :options="editorOption" @blur="onEditorBlur($event)" @focus="onEditorFocus($event)"
+            @change="onEditorChange($event)"></quill-editor>
+		<el-button class="tijiao" type="primary" @click="submit">提交</el-button>
+		<p>{{content}}</p>
 	</div>
 </template>
 
@@ -34,19 +37,43 @@
 		methods:{
 			submit () {
 			    console.log(this.$refs.text.value)
-			  }
+			},
+			onEditorReady(editor) { // 准备编辑器
+			
+			},
+			onEditorBlur(e){// 失去焦点事件
+				
+			}, 
+			onEditorFocus(e){// 获得焦点事件
+				
+			}, 
+			onEditorChange(e){// 内容改变事件
+				
+			}, 
 		},
 		components:{
 			quillEditor
+		},
+		computed: {
+			editor() {
+				return this.$refs.text.quill;
+			}
 		}
 	}
 </script>
 
-<style scoped="scoped">
+<style>
 	.el-select .el-input {
 	    width: 130px;
 	  }
 	  .input-with-select .el-input-group__prepend {
 	    background-color: #fff;
+	  }
+	  .tijiao{
+		  position: absolute;
+		  right: 0px;
+	  }
+	  .ql-container{
+		  min-height: 300px!important;
 	  }
 </style>
