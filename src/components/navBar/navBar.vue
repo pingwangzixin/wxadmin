@@ -1,5 +1,8 @@
 <template>
 	<div>
+		<div class="headIcon">
+			<div class="logo">wxadmin</div>
+		</div>
 		<div class="navBar">
 			<div>
 				<el-menu :default-active="this.$router.path" router class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
@@ -12,7 +15,6 @@
 		<div class="contentRight">
 			<router-view></router-view>
 		</div>
-		
 	</div>
 	
 </template>
@@ -44,10 +46,23 @@
 	}
 </script>
 
-<style>
+<style scoped="scoped">
+	.headIcon{
+		width:100%;
+		height: 60px;
+		background: rgb(84, 92, 100);
+		color:#fff;
+	}
+	.logo{
+		width:200px;
+		height: 60px;
+		line-height: 60px;
+		float: left;
+		font-size: 30px;
+	}
 	.navBar{
 		position: absolute;
-		top:0;
+		top:60px;
 		left:0;
 		bottom:0;
 		width:200px;
