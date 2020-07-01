@@ -26,6 +26,7 @@
 				    {name:'/icon',navItem:'icon'},
 				    {name:'/echarts',navItem:'echarts'},
 					{name:'/vuex',navItem:'vuex'},
+					{name:'/editor',navItem:'editor'},
 				]
 			}
 		},

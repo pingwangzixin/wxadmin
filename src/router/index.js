@@ -30,6 +30,11 @@ export default new Router({
 			path: 'vuex',
 			component: resolve => require(['@/components/vuex/vuex'], resolve), 
 			name: 'vuex',
+		},
+		{
+			path: 'editor',
+			component: resolve => require(['@/components/editor/editor'], resolve), 
+			name: 'editor',
 		}
 	  ],
 	  redirect: '/index'
