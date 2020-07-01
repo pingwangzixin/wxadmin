@@ -1,6 +1,6 @@
 <template>
 	<div class="echarts">
-		<div id="myChart" :style="{width:'300px',height:'300px'}"></div>
+		<div id="myChart" ref="container" :style="{width:'300px',height:'300px'}"></div>
 	</div>
 </template>
 
@@ -14,7 +14,7 @@
 		methods:{
 			drawLine(){
 			        // 基于准备好的dom，初始化echarts实例
-			        let myChart = this.$echarts.init(document.getElementById('myChart'))
+					let myChart = this.$echarts.init(this.$refs.container);
 			        // 绘制图表
 			        myChart.setOption({
 			            title: { text: '在Vue中使用echarts' },
