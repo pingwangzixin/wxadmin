@@ -17,7 +17,6 @@
 		methods:{
 			xiugai(){
 				this.$store.dispatch("getUserId", '789872');
-				console.log(this.userId)
 			}
 		},
 		computed: {
