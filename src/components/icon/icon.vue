@@ -107,9 +107,11 @@
 			border-bottom: 1px solid #eee;
 			margin-right: -1px;
 			margin-bottom: -1px;
+			box-sizing:border-box;
 	    }
 		.sudoku_item i{
 			margin-bottom: 10px;
+			
 		}
 	    .opacity{
 	        opacity: 0.4;
