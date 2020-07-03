@@ -19,6 +19,7 @@
 </template>
 
 <script>
+	var URL= require('url')
 	export default {
 		data() {
 			return {
@@ -49,6 +50,7 @@
 		},
 		methods: {
 			getUserList() {
+				
 				// this.$http.post(this.url.getUserList, this.listQuery).then(function(res) {
 				// 	console.log(res)
 				// })
@@ -58,11 +60,16 @@
 			},
 			handleCurrentChange(val) {
 				console.log(`当前页: ${val}`);
+			},
+			urlParse(){ //格式化url
+				var urlparmas=URL.parse('http://localhost:3000/index?id=3', true)
+				console.log(urlparmas.query)
 			}
 		},
 		created() {
 			var that = this
 			that.getUserList()
+			that.urlParse()
 		}
 	}
 </script>
