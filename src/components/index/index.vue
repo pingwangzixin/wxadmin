@@ -9,6 +9,14 @@
 			</el-table-column>
 		</el-table>
 		
+		
+		<el-form ref="form" :model="form" label-width="80px">
+		  <el-form-item label="活动名称" style="width: 500px;">
+		    <el-input :value="testdata" :formatter="(testdata==='null') ? testdata='' : 'haha'"></el-input>
+		  </el-form-item>
+		</el-form>
+		
+		
 		<!-- 分页 -->
 		<div v-show="!listLoading" class="pagination-container" style="margin-top:20px;">
 			<el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page.sync="listQuery.page"
@@ -45,12 +53,16 @@
 					date: '2016-05-03',
 					name: '王小虎',
 					address: '上海市普陀区金沙江路 1516 弄'
-				}]
+				}],
+				form: {
+				  name: ""
+				},
+				testdata:"null"
 			}
 		},
 		methods: {
 			getUserList() {
-				
+				// this.testdata="null"
 				// this.$http.post(this.url.getUserList, this.listQuery).then(function(res) {
 				// 	console.log(res)
 				// })
