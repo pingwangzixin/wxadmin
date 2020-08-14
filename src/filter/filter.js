@@ -1,26 +1,28 @@
 function filterZimu(n){
-	if(n==0){
+	if(n==1){
 		n='A'
-	}else if(n==1){
-		n="B"
 	}else if(n==2){
-		n="C"
+		n="B"
 	}else if(n==3){
-		n="D"
+		n="C"
 	}else if(n==4){
-		n="E"
+		n="D"
 	}else if(n==5){
-		n="F"
+		n="E"
 	}else if(n==6){
-		n="G"
+		n="F"
 	}else if(n==7){
-		n="H"
+		n="G"
 	}else if(n==8){
-		n="I"
+		n="H"
 	}else if(n==9){
-		n="J"
+		n="I"
 	}else if(n==10){
+		n="J"
+	}else if(n==11){
 		n="K"
+	}else if(n==26){
+		n="Z"
 	}
   return n;
 }

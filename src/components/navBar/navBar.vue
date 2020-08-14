@@ -29,6 +29,7 @@
 				    {name:'/echarts',navItem:'echarts'},
 					{name:'/vuex',navItem:'vuex'},
 					{name:'/editor',navItem:'editor'},
+					{name:'/filter',navItem:'filter'},
 				]
 			}
 		},
