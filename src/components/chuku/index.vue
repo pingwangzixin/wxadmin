@@ -1,18 +1,6 @@
 <template>
 	<div class="cont">
-		<!-- 筛选查询 -->
-		<div class="filter-container">
-			<div class="fl">
-				患者姓名
-				<el-input class="inputWidth" v-model="ptusername" placeholder="请输入" @input="widthCheck()" clearable></el-input>
-				<span class="mtltwo">联系方式</span>
-				<el-input class="inputWidth" v-model="ptelphone" placeholder="请输入" clearable></el-input>
-			</div>
-			<div class="fr">
-				<el-button style="margin-right:10px;" class="filter-item" type="primary" icon="search" @click="handleFilter(ptusername,ptelphone)">查询</el-button>
-				<!-- <el-button class="button " v-if="expotAll" @click="exportExcel" type="primary">导出</el-button> -->
-			</div>
-		</div>
+		
 		
 		<hr>
 		<!-- 新增患者 -->

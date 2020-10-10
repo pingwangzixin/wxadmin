@@ -24,12 +24,15 @@
 		data() {
 			return {
 				navList:[
-					{name:'/index',navItem:'表格'},
-				    {name:'/icon',navItem:'icon'},
-				    {name:'/echarts',navItem:'echarts'},
-					{name:'/vuex',navItem:'vuex'},
-					{name:'/editor',navItem:'editor'},
-					{name:'/filter',navItem:'filter'},
+					{name:'/ruku',navItem:'入库'},
+					{name:'/chuku',navItem:'出库'},
+					{name:'/kucun',navItem:'库存'},
+					// {name:'/index',navItem:'表格'},
+				 //    {name:'/icon',navItem:'icon'},
+				 //    {name:'/echarts',navItem:'echarts'},
+					// {name:'/vuex',navItem:'vuex'},
+					// {name:'/editor',navItem:'editor'},
+					// {name:'/filter',navItem:'filter'},
 				]
 			}
 		},

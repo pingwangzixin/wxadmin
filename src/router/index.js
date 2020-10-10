@@ -9,7 +9,23 @@ export default new Router({
 			path: '/',
 			name: 'nav',
 			component: resolve => require(['@/components/navBar/navBar'], resolve),
-			children: [{
+			children: [
+				{
+					path: 'ruku',
+					component: resolve => require(['@/components/ruku/index'], resolve),
+					name: '入库',
+				},
+				{
+					path: 'chuku',
+					component: resolve => require(['@/components/chuku/index'], resolve),
+					name: '出库',
+				},
+				{
+					path: 'kucun',
+					component: resolve => require(['@/components/kucun/index'], resolve),
+					name: '库存',
+				},
+				{
 					path: 'index',
 					component: resolve => require(['@/components/index/index'], resolve),
 					name: '首页',
