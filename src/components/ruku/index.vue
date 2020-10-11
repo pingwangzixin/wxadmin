@@ -1,5 +1,6 @@
 <template>
 	<div class="cont">
+		<p class="titlepage">入库管理</p>
 		<!-- 筛选查询 -->
 		<div class="filter-container">
 			<div class="fl">

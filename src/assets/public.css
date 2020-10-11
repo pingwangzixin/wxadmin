@@ -5,6 +5,12 @@ body {
 	padding:20px 0;
 }
 
+.titlepage{
+	font-size: 22px;
+	text-align: left;
+	color: #a40001;
+}
+
 .filter-container {
 		height: 40px;
 		padding:20px 0;

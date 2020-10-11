@@ -1,5 +1,6 @@
 <template>
 	<div class="cont">
+		<p class="titlepage">库存管理</p>
 		<!-- 筛选查询 -->
 		<div class="filter-container">
 			<div class="fl">

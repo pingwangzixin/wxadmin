@@ -45,7 +45,7 @@
 		  }
 		},
 		created() {
-			
+			this.$router.path='/ruku'
 		}
 	}
 </script>
