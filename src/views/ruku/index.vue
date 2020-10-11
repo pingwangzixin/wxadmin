@@ -85,15 +85,39 @@
 		<!-- 弹窗 -->
 		<el-dialog title="新增货物" :visible.sync="dialogFormVisible">
 		  <el-form :model="form">
-		    <el-form-item label="活动名称">
-		      <el-input v-model="form.name" autocomplete="off"></el-input>
+		    <el-form-item label="合同编号">
+		      <el-input v-model="form.hetongnum" autocomplete="off"></el-input>
 		    </el-form-item>
-		    <el-form-item label="活动区域">
-		      <el-select v-model="form.region" placeholder="请选择活动区域">
-		        <el-option label="区域一" value="shanghai"></el-option>
-		        <el-option label="区域二" value="beijing"></el-option>
-		      </el-select>
+		    <el-form-item label="商品编码">
+		      <el-input v-model="form.shangpinnum" autocomplete="off"></el-input>
 		    </el-form-item>
+			<el-form-item label="产品名称">
+			  <el-input v-model="form.chanpinname" autocomplete="off"></el-input>
+			</el-form-item>
+			<el-form-item label="规格型号">
+			  <el-input v-model="form.guige" autocomplete="off"></el-input>
+			</el-form-item>
+			<el-form-item label="单价">
+			  <el-input v-model="form.price" autocomplete="off"></el-input>
+			</el-form-item>
+			<el-form-item label="入库数量">
+			  <el-input v-model="form.rukunum" autocomplete="off"></el-input>
+			</el-form-item>
+			<el-form-item label="单位">
+			  <el-input v-model="form.danwei" autocomplete="off"></el-input>
+			</el-form-item>
+			<el-form-item label="金额">
+			  <el-input v-model="form.jiner" autocomplete="off"></el-input>
+			</el-form-item>
+			<el-form-item label="供应商名称">
+			  <el-input v-model="form.gongyingname" autocomplete="off"></el-input>
+			</el-form-item>
+			<el-form-item label="入库人">
+			  <el-input v-model="form.rukuren" autocomplete="off"></el-input>
+			</el-form-item>
+			<el-form-item label="备注">
+			  <el-input v-model="form.beizhu" autocomplete="off"></el-input>
+			</el-form-item>
 		  </el-form>
 		  <div slot="footer" class="dialog-footer">
 		    <el-button @click="dialogFormVisible = false">取 消</el-button>
