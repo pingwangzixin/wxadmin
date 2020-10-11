@@ -12,17 +12,17 @@ export default new Router({
 			children: [
 				{
 					path: 'ruku',
-					component: resolve => require(['@/components/ruku/index'], resolve),
+					component: resolve => require(['@/views/ruku/index'], resolve),
 					name: '入库',
 				},
 				{
 					path: 'chuku',
-					component: resolve => require(['@/components/chuku/index'], resolve),
+					component: resolve => require(['@/views/chuku/index'], resolve),
 					name: '出库',
 				},
 				{
 					path: 'kucun',
-					component: resolve => require(['@/components/kucun/index'], resolve),
+					component: resolve => require(['@/views/kucun/index'], resolve),
 					name: '库存',
 				},
 				{

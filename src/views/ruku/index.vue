@@ -68,10 +68,7 @@
 			</el-table-column>
 			<el-table-column align="center" label="供应商名称">
 				<template slot-scope="scope">
-					<span v-if="scope.row.bloodType==1">A型</span>
-					<span v-if="scope.row.bloodType==2">B型</span>
-					<span v-if="scope.row.bloodType==3">AB型</span>
-					<span v-if="scope.row.bloodType==4">O型</span>
+					<span>{{ scope.row.mobile }}</span>
 				</template>
 			</el-table-column>
 			<el-table-column align="center" label="入库人">
@@ -86,12 +83,12 @@
 			</el-table-column>
 		</el-table>
 		<!-- 弹窗 -->
-		<el-dialog title="收货地址" :visible.sync="dialogFormVisible">
+		<el-dialog title="新增货物" :visible.sync="dialogFormVisible">
 		  <el-form :model="form">
-		    <el-form-item label="活动名称" :label-width="formLabelWidth">
+		    <el-form-item label="活动名称">
 		      <el-input v-model="form.name" autocomplete="off"></el-input>
 		    </el-form-item>
-		    <el-form-item label="活动区域" :label-width="formLabelWidth">
+		    <el-form-item label="活动区域">
 		      <el-select v-model="form.region" placeholder="请选择活动区域">
 		        <el-option label="区域一" value="shanghai"></el-option>
 		        <el-option label="区域二" value="beijing"></el-option>
