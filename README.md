@@ -18,7 +18,7 @@ npm run build
 npm run build --report
 ```
 
-# 接口写在src/utils/interface.js文件中
+# 接口地址写在src/utils/interface.js文件中
 调用接口
 this.$http.post(this.url.getUserList,this.listQuery).then(function(res){
 	console.log(res)
