@@ -3,13 +3,13 @@
 		<!-- 筛选查询 -->
 		<div class="filter-container">
 			<div class="fl">
-				患者姓名
+				商品编码
 				<el-input class="inputWidth" v-model="ptusername" placeholder="请输入" @input="widthCheck()" clearable></el-input>
-				<span class="mtltwo">联系方式</span>
+				<span class="mtltwo">合同编号</span>
 				<el-input class="inputWidth" v-model="ptelphone" placeholder="请输入" clearable></el-input>
 			</div>
 			<div class="fr">
-				<el-button style="margin-right:10px;" class="filter-item" type="primary" icon="search" @click="handleFilter(ptusername,ptelphone)">查询</el-button>
+				<el-button style="margin-right:10px;" class="filter-item" type="primary" icon="search" @click="handleFilter(ptusername,ptelphone)">搜索</el-button>
 				<!-- <el-button class="button " v-if="expotAll" @click="exportExcel" type="primary">导出</el-button> -->
 			</div>
 		</div>
@@ -17,54 +17,55 @@
 		<hr>
 		<!-- 新增患者 -->
 		<div class="clearfix patwo">
-			<el-button class="filter-item" @click="handleCreate" type="primary" icon="edit">新增患者</el-button>
+			<el-button class="filter-item" @click="dialogFormVisible = true" type="primary" icon="edit">新增商品</el-button>
+			<el-button class="filter-item" @click="delData" type="primary" icon="edit">删除商品</el-button>
 		</div>
 		<!-- 表格！！！！ -->
 		<el-table  @selection-change='selectRow'  ref="msgDiv" class="table" :key='tableKey' :data="list" v-loading="listLoading" element-loading-text="给我一点时间" border
 		 fit highlight-current-row style="width: 100%">
-			<el-table-column type="selection" width="45" align="center"></el-table-column>
-			<el-table-column align="center" label="患者姓名" width="100px">
+			<el-table-column type="selection" align="center"></el-table-column>
+			<el-table-column align="center" label="商品编码" width="100px">
 				<template slot-scope="scope">
 					<span>{{ scope.row.name }}</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="性别">
+			<el-table-column align="center" label="商品名称">
 				<template slot-scope="scope">
 					<span v-if="scope.row.sex==1">男</span>
 					<span v-if="scope.row.sex==0">女</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="年龄">
+			<el-table-column align="center" label="规格">
 				<template slot-scope="scope">
 					<span>{{ scope.row.age }}</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="身高（Cm)">
+			<el-table-column align="center" label="单价">
 				<template slot-scope="scope">
 					<span>{{ scope.row.stature }}</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="体重(KG)">
+			<el-table-column align="center" label="进货价">
 				<template slot-scope="scope">
 					<span>{{ scope.row.weight }}</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="BMI（kg/m²）">
+			<el-table-column align="center" label="单位">
 				<template slot-scope="scope">
 					<span>{{scope.row.bmi}}</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="体表面积">
+			<el-table-column align="center" label="期初库存">
 				<template slot-scope="scope">
 					<span>{{scope.row.bodyArea}}</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="联系方式">
+			<el-table-column align="center" label="入库统计">
 				<template slot-scope="scope">
 					<span>{{ scope.row.mobile }}</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="血型">
+			<el-table-column align="center" label="销售统计">
 				<template slot-scope="scope">
 					<span v-if="scope.row.bloodType==1">A型</span>
 					<span v-if="scope.row.bloodType==2">B型</span>
@@ -72,17 +73,57 @@
 					<span v-if="scope.row.bloodType==4">O型</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="既往史">
+			<el-table-column align="center" label="售品库存">
 				<template slot-scope="scope">
 					<span>{{ scope.row.lhistory }}</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="ECOG评分">
+			<el-table-column align="center" label="样品期初库存">
 				<template slot-scope="scope">
 					<span>{{ scope.row.ecog }}</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="操作">
+			<el-table-column align="center" label="样品库统计">
+				<template slot-scope="scope">
+					<span>{{ scope.row.ecog }}</span>
+				</template>
+			</el-table-column>
+			<el-table-column align="center" label="销售统计">
+				<template slot-scope="scope">
+					<span>{{ scope.row.ecog }}</span>
+				</template>
+			</el-table-column>
+			<el-table-column align="center" label="样品库存">
+				<template slot-scope="scope">
+					<span>{{ scope.row.ecog }}</span>
+				</template>
+			</el-table-column>
+			<el-table-column align="center" label="坏品期初库存">
+				<template slot-scope="scope">
+					<span>{{ scope.row.ecog }}</span>
+				</template>
+			</el-table-column>
+			<el-table-column align="center" label="坏品库统计">
+				<template slot-scope="scope">
+					<span>{{ scope.row.ecog }}</span>
+				</template>
+			</el-table-column>
+			<el-table-column align="center" label="销售统计">
+				<template slot-scope="scope">
+					<span>{{ scope.row.ecog }}</span>
+				</template>
+			</el-table-column>
+			<el-table-column align="center" label="坏品库存">
+				<template slot-scope="scope">
+					<span>{{ scope.row.ecog }}</span>
+				</template>
+			</el-table-column>
+			<el-table-column align="center" label="总库存">
+				<template slot-scope="scope">
+					<span>{{ scope.row.ecog }}</span>
+				</template>
+			</el-table-column>
+			<el-table-column align="center" label="金额">
 				<template slot-scope="scope">
 					<el-button size="small" type="success" @click="handleUpdate(scope.row.id)">查看详情
 					</el-button>
@@ -90,12 +131,26 @@
 			</el-table-column>
 		</el-table>
 		
-		<!-- 分页 -->
-		<div v-show="!listLoading" class="pagination-container" style="margin-top:20px;">
-			<el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page.sync="listQuery.page"
-			 :page-sizes="[10,20,30,50]" :page-size="listQuery.rows" layout="total, sizes, prev, pager, next, jumper" :total="total">
-			</el-pagination>
-		</div>
+		
+		<!-- 弹窗 -->
+		<el-dialog title="收货地址" :visible.sync="dialogFormVisible">
+		  <el-form :model="form">
+		    <el-form-item label="活动名称" :label-width="formLabelWidth">
+		      <el-input v-model="form.name" autocomplete="off"></el-input>
+		    </el-form-item>
+		    <el-form-item label="活动区域" :label-width="formLabelWidth">
+		      <el-select v-model="form.region" placeholder="请选择活动区域">
+		        <el-option label="区域一" value="shanghai"></el-option>
+		        <el-option label="区域二" value="beijing"></el-option>
+		      </el-select>
+		    </el-form-item>
+		  </el-form>
+		  <div slot="footer" class="dialog-footer">
+		    <el-button @click="dialogFormVisible = false">取 消</el-button>
+		    <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+		  </div>
+		</el-dialog>
+
 	</div>
 </template>
 
@@ -104,10 +159,7 @@
 	export default {
 		data() {
 			return {
-				listQuery: {
-					page: 1,
-					rows: 20,
-				},
+				dialogFormVisible: false,
 				listLoading: false,
 				total: 100,
 				tableData: [{

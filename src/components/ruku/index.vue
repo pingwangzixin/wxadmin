@@ -3,13 +3,13 @@
 		<!-- 筛选查询 -->
 		<div class="filter-container">
 			<div class="fl">
-				患者姓名
+				商品编码
 				<el-input class="inputWidth" v-model="ptusername" placeholder="请输入" @input="widthCheck()" clearable></el-input>
-				<span class="mtltwo">联系方式</span>
+				<span class="mtltwo">合同编号</span>
 				<el-input class="inputWidth" v-model="ptelphone" placeholder="请输入" clearable></el-input>
 			</div>
 			<div class="fr">
-				<el-button style="margin-right:10px;" class="filter-item" type="primary" icon="search" @click="handleFilter(ptusername,ptelphone)">查询</el-button>
+				<el-button style="margin-right:10px;" class="filter-item" type="primary" icon="search" @click="handleFilter(ptusername,ptelphone)">搜索</el-button>
 				<!-- <el-button class="button " v-if="expotAll" @click="exportExcel" type="primary">导出</el-button> -->
 			</div>
 		</div>
@@ -17,54 +17,55 @@
 		<hr>
 		<!-- 新增患者 -->
 		<div class="clearfix patwo">
-			<el-button class="filter-item" @click="handleCreate" type="primary" icon="edit">新增患者</el-button>
+			<el-button class="filter-item" @click="handleCreate" type="primary" icon="edit">新增商品</el-button>
+			<el-button class="filter-item" @click="delData" type="primary" icon="edit">删除商品</el-button>
 		</div>
 		<!-- 表格！！！！ -->
 		<el-table  @selection-change='selectRow'  ref="msgDiv" class="table" :key='tableKey' :data="list" v-loading="listLoading" element-loading-text="给我一点时间" border
 		 fit highlight-current-row style="width: 100%">
 			<el-table-column type="selection" width="45" align="center"></el-table-column>
-			<el-table-column align="center" label="患者姓名" width="100px">
+			<el-table-column align="center" label="合同编号" width="100px">
 				<template slot-scope="scope">
 					<span>{{ scope.row.name }}</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="性别">
+			<el-table-column align="center" label="商品编码">
 				<template slot-scope="scope">
-					<span v-if="scope.row.sex==1">男</span>
-					<span v-if="scope.row.sex==0">女</span>
+					<span>{{}}</span>
+					
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="年龄">
+			<el-table-column align="center" label="产品名称">
 				<template slot-scope="scope">
 					<span>{{ scope.row.age }}</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="身高（Cm)">
+			<el-table-column align="center" label="规格型号">
 				<template slot-scope="scope">
 					<span>{{ scope.row.stature }}</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="体重(KG)">
+			<el-table-column align="center" label="单价">
 				<template slot-scope="scope">
 					<span>{{ scope.row.weight }}</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="BMI（kg/m²）">
+			<el-table-column align="center" label="入库数量">
 				<template slot-scope="scope">
 					<span>{{scope.row.bmi}}</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="体表面积">
+			<el-table-column align="center" label="单位">
 				<template slot-scope="scope">
 					<span>{{scope.row.bodyArea}}</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="联系方式">
+			<el-table-column align="center" label="金额">
 				<template slot-scope="scope">
 					<span>{{ scope.row.mobile }}</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="血型">
+			<el-table-column align="center" label="供应商名称">
 				<template slot-scope="scope">
 					<span v-if="scope.row.bloodType==1">A型</span>
 					<span v-if="scope.row.bloodType==2">B型</span>
@@ -72,30 +73,18 @@
 					<span v-if="scope.row.bloodType==4">O型</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="既往史">
+			<el-table-column align="center" label="入库人">
 				<template slot-scope="scope">
 					<span>{{ scope.row.lhistory }}</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="ECOG评分">
+			<el-table-column align="center" label="备注">
 				<template slot-scope="scope">
 					<span>{{ scope.row.ecog }}</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="操作">
-				<template slot-scope="scope">
-					<el-button size="small" type="success" @click="handleUpdate(scope.row.id)">查看详情
-					</el-button>
-				</template>
-			</el-table-column>
 		</el-table>
 		
-		<!-- 分页 -->
-		<div v-show="!listLoading" class="pagination-container" style="margin-top:20px;">
-			<el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page.sync="listQuery.page"
-			 :page-sizes="[10,20,30,50]" :page-size="listQuery.rows" layout="total, sizes, prev, pager, next, jumper" :total="total">
-			</el-pagination>
-		</div>
 	</div>
 </template>
 
@@ -110,23 +99,7 @@
 				},
 				listLoading: false,
 				total: 100,
-				tableData: [{
-					date: '2016-05-02',
-					name: '王小虎',
-					address: '上海市普陀区金沙江路 1518 弄'
-				}, {
-					date: '2016-05-04',
-					name: '王小虎',
-					address: '上海市普陀区金沙江路 1517 弄'
-				}, {
-					date: '2016-05-01',
-					name: '王小虎',
-					address: '上海市普陀区金沙江路 1519 弄'
-				}, {
-					date: '2016-05-03',
-					name: '王小虎',
-					address: '上海市普陀区金沙江路 1516 弄'
-				}],
+				tableData: [],
 				multipleSelection: [],
 				form: {
 					name: ""
@@ -145,125 +118,7 @@
 				})
 			},
 			handleCreate() { //新增患者
-				this.dialogStatus = "create";
-				this.dialogFormVisible = true;
-				this.activeName = 'first';
-				this.patientId = "";
 			
-				//用户信息
-				this.addForm.name = "";
-				this.addForm.sex = "";
-				this.addForm.age = "";
-				this.addForm.mobile = "";
-				this.addForm.stature = "";
-				this.addForm.weight = "";
-				this.addForm.bloodType = "";
-				this.addForm.ecog = "";
-				this.addForm.lhistory = "";
-				this.addForm.bmi = "";
-				this.addForm.bodyArea = "";
-			
-				//实验室
-				this.saveExamineForm.wbc = "";
-				this.saveExamineForm.anc = "";
-				this.saveExamineForm.hg = "";
-				this.saveExamineForm.mcv = "";
-				this.saveExamineForm.mch = "";
-				this.saveExamineForm.mchc = "";
-				this.saveExamineForm.rdwsd = "";
-				this.saveExamineForm.rdwcv = "";
-				this.saveExamineForm.plt = "";
-				this.saveExamineForm.lymphn = "";
-				this.saveExamineForm.egg = "";
-				this.saveExamineForm.lactic = "";
-				this.saveExamineForm.eryt = "";
-				this.saveExamineForm.b2mg = "";
-				this.saveExamineForm.alt = "";
-				this.saveExamineForm.ast = "";
-				this.saveExamineForm.tbil = "";
-				this.saveExamineForm.direct = "";
-				this.saveExamineForm.indirect = "";
-			
-				//MIC
-				this.saveMicmForm.chromosome = "";
-				this.saveMicmForm.createTime = "";
-				this.saveMicmForm.degree = "";
-				this.saveMicmForm.fusionGene = "";
-				this.saveMicmForm.laip = "";
-				this.saveMicmForm.morbi = "";
-				this.saveMicmForm.morbiStatus = "";
-				this.saveMicmForm.mutantGene = "";
-				this.saveMicmForm.patientId = "";
-				this.saveMicmForm.pbProtocell = "";
-				this.saveMicmForm.protocell = "";
-				this.saveMicmForm.protocellGs = "";
-				this.saveMicmForm.protocellWzx = "";
-				this.saveMicmForm.rest = "";
-				this.saveMicmForm.updateTime = "";
-				this.saveMicmForm.wti = "";
-				this.saveMicmForm.morbiRed = "";
-				this.saveMicmForm.morbiGrain = "";
-				this.saveMicmForm.morbiHuge = "";
-			
-				//诊断
-				this.DiagnoseForm.consensus = "";
-				this.DiagnoseForm.diagnose = "";
-				this.DiagnoseForm.diagnoseTime = "";
-				this.DiagnoseForm.nccn = "";
-			
-			
-				//治疗
-				this.CureForm.standard = "";
-				this.CureForm.targetedIs = "";
-				this.CureForm.clinical = "";
-				this.CureForm.demethy = "";
-				this.CureForm.intensifyCureDose = "";
-				this.CureForm.intensifyCureValue = "";
-				this.CureForm.lowDose = "";
-				this.CureForm.lowDx = "";
-				this.CureForm.optimal = "";
-				this.CureForm.standard = "";
-				this.CureForm.standardCure = "";
-				this.CureForm.targeted = "";
-				this.CureForm.targetedMed = "";
-				this.CureForm.targetedValue = "";
-				this.CureForm.transplantIs = "";
-				this.CureForm.transplantMed = "";
-				this.CureForm.transplantTime = "";
-				this.CureForm.wayIs = "";
-				this.CureForm.wayMed = "";
-			
-				//并发症
-				this.CureCompForm.infectionIs = "";
-				this.CureCompForm.infectionMed = "";
-				this.CureCompForm.medicaIs = "";
-				this.CureCompForm.medicaValue = "";
-				this.CureCompForm.reaction = "";
-				this.CureCompForm.tranOne = "";
-				this.CureCompForm.tranThree = "";
-				this.CureCompForm.tranTwo = "";
-			
-				//7空着 todo
-				this.CourseForm.geneIs = "";
-				this.CourseForm.courseOne = "";
-				this.CourseForm.courseCd = "";
-				this.CourseForm.cdTime = "";
-				this.CourseForm.cdAfter = "";
-			
-				//8
-				this.fufaForm.recurIs = 2;
-				this.fufaForm.recurDose = "";
-				this.fufaForm.recurGene = "";
-				this.fufaForm.recurMed = "";
-				this.fufaForm.recurOr = "";
-				this.fufaForm.recurStatus = "";
-			
-				//随访
-				this.suiFangForm.ending = "";
-				this.suiFangForm.os = "";
-				this.suiFangForm.rfsEfs = "";
-				this.suiFangForm.suifangStatus = "";
-				this.suiFangForm.suifangTime = "";
 			
 			},
 			// getList() { /*** 获取患者列表*/
@@ -348,23 +203,5 @@
 </script>
 
 <style scoped="scoped">
-	.filter-container {
-		height: 40px;
-	}
-
-	.fl {
-		float: left;
-	}
-
-	.fr {
-		float: right;
-	}
-
-	.clearfix {
-		clear: both;
-	}
-
-	.mtltwo {
-		margin-left: 20px;
-	}
+	
 </style>

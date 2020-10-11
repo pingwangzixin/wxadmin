@@ -55,7 +55,7 @@ export default new Router({
 					name: 'filter',
 				}
 			],
-			redirect: '/index'
+			redirect: '/ruku'
 		},
 		{
 			path: '/login',

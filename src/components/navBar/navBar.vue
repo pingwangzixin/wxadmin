@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div class="headIcon">
-			<div class="logo">wxadmin</div>
+			<div class="logo">进销存管理系统</div>
 		</div>
 		<div class="navBar">
 			<div>
@@ -54,7 +54,7 @@
 	.headIcon{
 		width:100%;
 		height: 60px;
-		background: rgb(84, 92, 100);
+		background: #545c64;
 		color:#fff;
 	}
 	.logo{
@@ -62,7 +62,7 @@
 		height: 60px;
 		line-height: 60px;
 		float: left;
-		font-size: 30px;
+		font-size: 22px;
 	}
 	.navBar{
 		position: absolute;

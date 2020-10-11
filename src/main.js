@@ -8,6 +8,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
 import './assets/reset.css'
+import './assets/public.css'
 import interFace from "./utils/interface.js" //定义好的接口地址
 import { loadStyle } from './utils/baseUrl.js' //创建阿里小图标的方法
 import { iconfontUrl,iconfontVersion } from '@/iconfont/icon'; //引入阿里小图标的库

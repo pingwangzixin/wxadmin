@@ -1,58 +1,71 @@
 <template>
 	<div class="cont">
-		
+		<!-- 筛选查询 -->
+		<div class="filter-container">
+			<div class="fl">
+				商品编码
+				<el-input class="inputWidth" v-model="ptusername" placeholder="请输入" @input="widthCheck()" clearable></el-input>
+				<span class="mtltwo">合同编号</span>
+				<el-input class="inputWidth" v-model="ptelphone" placeholder="请输入" clearable></el-input>
+			</div>
+			<div class="fr">
+				<el-button style="margin-right:10px;" class="filter-item" type="primary" icon="search" @click="handleFilter(ptusername,ptelphone)">搜索</el-button>
+				<!-- <el-button class="button " v-if="expotAll" @click="exportExcel" type="primary">导出</el-button> -->
+			</div>
+		</div>
 		
 		<hr>
 		<!-- 新增患者 -->
 		<div class="clearfix patwo">
-			<el-button class="filter-item" @click="handleCreate" type="primary" icon="edit">新增患者</el-button>
+			<el-button class="filter-item" @click="handleCreate" type="primary" icon="edit">新增商品</el-button>
+			<el-button class="filter-item" @click="delData" type="primary" icon="edit">删除商品</el-button>
 		</div>
 		<!-- 表格！！！！ -->
 		<el-table  @selection-change='selectRow'  ref="msgDiv" class="table" :key='tableKey' :data="list" v-loading="listLoading" element-loading-text="给我一点时间" border
 		 fit highlight-current-row style="width: 100%">
-			<el-table-column type="selection" width="45" align="center"></el-table-column>
-			<el-table-column align="center" label="患者姓名" width="100px">
+			<el-table-column type="selection" align="center"></el-table-column>
+			<el-table-column align="center" label="序号">
 				<template slot-scope="scope">
 					<span>{{ scope.row.name }}</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="性别">
+			<el-table-column align="center" label="出库日期">
 				<template slot-scope="scope">
 					<span v-if="scope.row.sex==1">男</span>
 					<span v-if="scope.row.sex==0">女</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="年龄">
+			<el-table-column align="center" label="合同编号">
 				<template slot-scope="scope">
 					<span>{{ scope.row.age }}</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="身高（Cm)">
+			<el-table-column align="center" label="客户名称">
 				<template slot-scope="scope">
 					<span>{{ scope.row.stature }}</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="体重(KG)">
+			<el-table-column align="center" label="客户地址">
 				<template slot-scope="scope">
 					<span>{{ scope.row.weight }}</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="BMI（kg/m²）">
+			<el-table-column align="center" label="用途">
 				<template slot-scope="scope">
 					<span>{{scope.row.bmi}}</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="体表面积">
+			<el-table-column align="center" label="商品编号">
 				<template slot-scope="scope">
 					<span>{{scope.row.bodyArea}}</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="联系方式">
+			<el-table-column align="center" label="名称">
 				<template slot-scope="scope">
 					<span>{{ scope.row.mobile }}</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="血型">
+			<el-table-column align="center" label="规格">
 				<template slot-scope="scope">
 					<span v-if="scope.row.bloodType==1">A型</span>
 					<span v-if="scope.row.bloodType==2">B型</span>
@@ -60,30 +73,44 @@
 					<span v-if="scope.row.bloodType==4">O型</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="既往史">
+			<el-table-column align="center" label="单价">
 				<template slot-scope="scope">
 					<span>{{ scope.row.lhistory }}</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="ECOG评分">
+			<el-table-column align="center" label="出库数量">
 				<template slot-scope="scope">
 					<span>{{ scope.row.ecog }}</span>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="操作">
+			<el-table-column align="center" label="单位">
 				<template slot-scope="scope">
 					<el-button size="small" type="success" @click="handleUpdate(scope.row.id)">查看详情
 					</el-button>
 				</template>
 			</el-table-column>
+			<el-table-column align="center" label="金额">
+				<template slot-scope="scope">
+					<span>{{ scope.row.ecog }}</span>
+				</template>
+			</el-table-column>
+			<el-table-column align="center" label="领用人">
+				<template slot-scope="scope">
+					<span>{{ scope.row.ecog }}</span>
+				</template>
+			</el-table-column>
+			<el-table-column align="center" label="出库人">
+				<template slot-scope="scope">
+					<span>{{ scope.row.ecog }}</span>
+				</template>
+			</el-table-column>
+			<el-table-column align="center" label="备注">
+				<template slot-scope="scope">
+					<span>{{ scope.row.ecog }}</span>
+				</template>
+			</el-table-column>
 		</el-table>
 		
-		<!-- 分页 -->
-		<div v-show="!listLoading" class="pagination-container" style="margin-top:20px;">
-			<el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page.sync="listQuery.page"
-			 :page-sizes="[10,20,30,50]" :page-size="listQuery.rows" layout="total, sizes, prev, pager, next, jumper" :total="total">
-			</el-pagination>
-		</div>
 	</div>
 </template>
 
@@ -340,19 +367,165 @@
 		height: 40px;
 	}
 
-	.fl {
-		float: left;
+	.inputWidth {
+		width: 200px;
 	}
-
-	.fr {
-		float: right;
+	
+	.dashedB {
+		width: 850px;
+		text-align: left;
+		border: 1px dashed #ccc;
+		padding-top: 20px;
+		margin: 0 auto;
 	}
-
-	.clearfix {
-		clear: both;
+	
+	.mttwo {
+		margin-top: 20px;
 	}
-
-	.mtltwo {
-		margin-left: 20px;
+	
+	.formPosition {
+		position: relative;
+		margin: 20px auto;
 	}
+	
+	.formPosition:before {
+		position: absolute;
+		display: block;
+		min-width: 60px;
+		height: 30px;
+		background: #fff;
+		left: 30px;
+		top: -10px;
+	}
+	
+	.userInfo:before {
+		content: "新增患者";
+	}
+	
+	.xuechang::before {
+		content: "血常规(生病时)";
+	}
+	
+	.xuechang {
+		padding: 20px;
+		box-sizing: border-box;
+	}
+	
+	.shenghua::before {
+		content: "生化";
+	}
+	
+	.gusui::before {
+		content: "发病时骨髓形态";
+	}
+	
+	.mianyi::before {
+		content: "免疫分型";
+	}
+	
+	.jiyin::before {
+		content: "基因";
+	}
+	
+	.ranseti::before {
+		content: "染色体";
+	}
+	
+	.fish::before {
+		content: "FISH";
+	}
+	
+	.zhenduan::before {
+		content: "诊断";
+	}
+	
+	.youdao::before {
+		content: "诱导治疗";
+	}
+	
+	.gonggu::before {
+		content: "巩固治疗";
+	}
+	
+	.yizhi::before {
+		content: "是否移植（类型）";
+	}
+	
+	.bingfazheng::before {
+		content: "治疗相关并发症";
+	}
+	
+	.liaoxiao::before {
+		content: "疗效评价";
+	}
+	
+	.fufa::before {
+		content: "复发";
+	}
+	
+	.suifang::before {
+		content: "随访";
+	}
+		/* 导出按钮 */
+		.toexcel {
+			cursor: pointer;
+			cursor: hand;
+			width: 70px;
+			height: 34px;
+		}
+	
+		.fl {
+			float: left;
+		}
+	
+		.fr {
+			float: right;
+		}
+	
+		.clearfix {
+			clear: both;
+		}
+	
+		.mtltwo {
+			margin-left: 20px;
+		}
+	
+		.patwo {
+			margin-bottom: 10px;
+		}
+	
+		hr {
+			background-color: #ebeef5;
+			height: 1px;
+			border: none;
+		}
+	
+	
+		.gusui .el-form-item {
+			width: 800px;
+		}
+	
+		.bingfazheng .el-form-item {
+			width: 800px;
+		}
+		
+		.submitBtn{
+			width:900px;
+			text-align: center;
+		}
+		.fuheInput{
+			display: inline-block;
+			height: 39px;
+			background-color: #f5f7fa;
+			color: #909399;
+			vertical-align: middle;
+			line-height: 39px;
+			padding: 0 20px;
+			border: 1px solid #dcdfe6;
+			border-right: 0;
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+			border-radius: 4px;
+			margin-top: -2px;
+		}
 </style>
