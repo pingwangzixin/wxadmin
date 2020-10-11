@@ -7,7 +7,7 @@
 			<div>
 				<el-menu :default-active="this.$router.path" router class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
 					 <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name">
-					  {{item.navItem}}
+					  <i :class="item.iconClass"></i>{{item.navItem}}
 					 </el-menu-item>
 				</el-menu>
 			</div>
@@ -24,11 +24,11 @@
 		data() {
 			return {
 				navList:[
-					{name:'/ruku',navItem:'入库'},
-					{name:'/chuku',navItem:'出库'},
-					{name:'/kucun',navItem:'库存'},
+					{name:'/ruku',navItem:'入库',iconClass:'iconfont iconicon_function_ruku'},
+					{name:'/chuku',navItem:'出库',iconClass:'iconfont iconicon_function_chuku'},
+					{name:'/kucun',navItem:'库存',iconClass:'iconfont iconkucunguanli'},
 					// {name:'/index',navItem:'表格'},
-				 //    {name:'/icon',navItem:'icon'},
+				    // {name:'/icon',navItem:'icon'},
 				 //    {name:'/echarts',navItem:'echarts'},
 					// {name:'/vuex',navItem:'vuex'},
 					// {name:'/editor',navItem:'editor'},
@@ -71,6 +71,10 @@
 		bottom:0;
 		width:200px;
 		background:rgb(84, 92, 100);
+	}
+	.navBar i{
+		color:#fff;
+		margin-right: 6px;
 	}
 	ul>li{
 		text-align: center;

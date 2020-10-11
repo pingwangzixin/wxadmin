@@ -59,6 +59,18 @@
 					id:11,
 					name:'版本更新',
 					iconClass:"iconfont icon-app_banben"
+				},{
+					id:12,
+					name:'入库',
+					iconClass:"iconfont iconicon_function_ruku"
+				},{
+					id:13,
+					name:'出库',
+					iconClass:"iconfont iconicon_function_chuku"
+				},{
+					id:14,
+					name:'库存',
+					iconClass:"iconfont iconkucunguanli"
 				}],
 				curSelect:null,
 			}
