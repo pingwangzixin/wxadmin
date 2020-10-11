@@ -114,14 +114,38 @@
 		<!-- 弹窗 -->
 		<el-dialog title="收货地址" :visible.sync="dialogFormVisible">
 		  <el-form :model="form">
-		    <el-form-item label="活动名称" :label-width="formLabelWidth">
-		      <el-input v-model="form.name" autocomplete="off"></el-input>
+		    <el-form-item label="合同编号">
+		      <el-input v-model="form.hetongnum" autocomplete="off"></el-input>
 		    </el-form-item>
-		    <el-form-item label="活动区域" :label-width="formLabelWidth">
-		      <el-select v-model="form.region" placeholder="请选择活动区域">
-		        <el-option label="区域一" value="shanghai"></el-option>
-		        <el-option label="区域二" value="beijing"></el-option>
-		      </el-select>
+		    <el-form-item label="商品编码">
+		      <el-input v-model="form.shangpinnum" autocomplete="off"></el-input>
+		    </el-form-item>
+		    <el-form-item label="产品名称">
+		      <el-input v-model="form.chanpinname" autocomplete="off"></el-input>
+		    </el-form-item>
+		    <el-form-item label="规格型号">
+		      <el-input v-model="form.guige" autocomplete="off"></el-input>
+		    </el-form-item>
+		    <el-form-item label="单价">
+		      <el-input v-model="form.price" autocomplete="off"></el-input>
+		    </el-form-item>
+		    <el-form-item label="入库数量">
+		      <el-input v-model="form.rukunum" autocomplete="off"></el-input>
+		    </el-form-item>
+		    <el-form-item label="单位">
+		      <el-input v-model="form.danwei" autocomplete="off"></el-input>
+		    </el-form-item>
+		    <el-form-item label="金额">
+		      <el-input v-model="form.jiner" autocomplete="off"></el-input>
+		    </el-form-item>
+		    <el-form-item label="供应商名称">
+		      <el-input v-model="form.gongyingname" autocomplete="off"></el-input>
+		    </el-form-item>
+		    <el-form-item label="入库人">
+		      <el-input v-model="form.rukuren" autocomplete="off"></el-input>
+		    </el-form-item>
+		    <el-form-item label="备注">
+		      <el-input v-model="form.beizhu" autocomplete="off"></el-input>
 		    </el-form-item>
 		  </el-form>
 		  <div slot="footer" class="dialog-footer">
@@ -139,17 +163,11 @@
 		data() {
 			return {
 				dialogFormVisible: false,
-				listQuery: {
-					page: 1,
-					rows: 20,
-				},
 				listLoading: false,
 				total: 100,
 				tableData: [],
 				multipleSelection: [],
-				form: {
-					name: ""
-				},
+				form: {},
 				testdata: "null",
 				ptusername: "",
 				ptelphone: '',
@@ -166,177 +184,11 @@
 			handleCreate() { //新增患者
 				this.dialogStatus = "create";
 				this.dialogFormVisible = true;
-				this.activeName = 'first';
-				this.patientId = "";
-			
-				//用户信息
-				this.addForm.name = "";
-				this.addForm.sex = "";
-				this.addForm.age = "";
-				this.addForm.mobile = "";
-				this.addForm.stature = "";
-				this.addForm.weight = "";
-				this.addForm.bloodType = "";
-				this.addForm.ecog = "";
-				this.addForm.lhistory = "";
-				this.addForm.bmi = "";
-				this.addForm.bodyArea = "";
-			
-				//实验室
-				this.saveExamineForm.wbc = "";
-				this.saveExamineForm.anc = "";
-				this.saveExamineForm.hg = "";
-				this.saveExamineForm.mcv = "";
-				this.saveExamineForm.mch = "";
-				this.saveExamineForm.mchc = "";
-				this.saveExamineForm.rdwsd = "";
-				this.saveExamineForm.rdwcv = "";
-				this.saveExamineForm.plt = "";
-				this.saveExamineForm.lymphn = "";
-				this.saveExamineForm.egg = "";
-				this.saveExamineForm.lactic = "";
-				this.saveExamineForm.eryt = "";
-				this.saveExamineForm.b2mg = "";
-				this.saveExamineForm.alt = "";
-				this.saveExamineForm.ast = "";
-				this.saveExamineForm.tbil = "";
-				this.saveExamineForm.direct = "";
-				this.saveExamineForm.indirect = "";
-			
-				//MIC
-				this.saveMicmForm.chromosome = "";
-				this.saveMicmForm.createTime = "";
-				this.saveMicmForm.degree = "";
-				this.saveMicmForm.fusionGene = "";
-				this.saveMicmForm.laip = "";
-				this.saveMicmForm.morbi = "";
-				this.saveMicmForm.morbiStatus = "";
-				this.saveMicmForm.mutantGene = "";
-				this.saveMicmForm.patientId = "";
-				this.saveMicmForm.pbProtocell = "";
-				this.saveMicmForm.protocell = "";
-				this.saveMicmForm.protocellGs = "";
-				this.saveMicmForm.protocellWzx = "";
-				this.saveMicmForm.rest = "";
-				this.saveMicmForm.updateTime = "";
-				this.saveMicmForm.wti = "";
-				this.saveMicmForm.morbiRed = "";
-				this.saveMicmForm.morbiGrain = "";
-				this.saveMicmForm.morbiHuge = "";
-			
-				//诊断
-				this.DiagnoseForm.consensus = "";
-				this.DiagnoseForm.diagnose = "";
-				this.DiagnoseForm.diagnoseTime = "";
-				this.DiagnoseForm.nccn = "";
-			
-			
-				//治疗
-				this.CureForm.standard = "";
-				this.CureForm.targetedIs = "";
-				this.CureForm.clinical = "";
-				this.CureForm.demethy = "";
-				this.CureForm.intensifyCureDose = "";
-				this.CureForm.intensifyCureValue = "";
-				this.CureForm.lowDose = "";
-				this.CureForm.lowDx = "";
-				this.CureForm.optimal = "";
-				this.CureForm.standard = "";
-				this.CureForm.standardCure = "";
-				this.CureForm.targeted = "";
-				this.CureForm.targetedMed = "";
-				this.CureForm.targetedValue = "";
-				this.CureForm.transplantIs = "";
-				this.CureForm.transplantMed = "";
-				this.CureForm.transplantTime = "";
-				this.CureForm.wayIs = "";
-				this.CureForm.wayMed = "";
-			
-				//并发症
-				this.CureCompForm.infectionIs = "";
-				this.CureCompForm.infectionMed = "";
-				this.CureCompForm.medicaIs = "";
-				this.CureCompForm.medicaValue = "";
-				this.CureCompForm.reaction = "";
-				this.CureCompForm.tranOne = "";
-				this.CureCompForm.tranThree = "";
-				this.CureCompForm.tranTwo = "";
-			
-				//7空着 todo
-				this.CourseForm.geneIs = "";
-				this.CourseForm.courseOne = "";
-				this.CourseForm.courseCd = "";
-				this.CourseForm.cdTime = "";
-				this.CourseForm.cdAfter = "";
-			
-				//8
-				this.fufaForm.recurIs = 2;
-				this.fufaForm.recurDose = "";
-				this.fufaForm.recurGene = "";
-				this.fufaForm.recurMed = "";
-				this.fufaForm.recurOr = "";
-				this.fufaForm.recurStatus = "";
-			
-				//随访
-				this.suiFangForm.ending = "";
-				this.suiFangForm.os = "";
-				this.suiFangForm.rfsEfs = "";
-				this.suiFangForm.suifangStatus = "";
-				this.suiFangForm.suifangTime = "";
-			
-			},
-			// getList() { /*** 获取患者列表*/
-			// 	this.listLoading = true
-			// 	for (let key in this.listQuery) {
-			// 		if (this.listQuery[key] == '') {
-			// 			delete this.listQuery[key]
-			// 		}
-			// 	}
-			// 	this.$http.post(this.url.getUserList, this.listQuery).then(function(res) {
-			// 		console.log(res)
-			// 	})
-			// 	axios.post(baseUrl() + 'user/patientList', this.listQuery).then(res => {
-			// 		if (res.data.code === 200) {
-			// 			this.list = res.data.data.records
-			// 			this.listLoading = false;
-			// 			this.total = res.data.data.total
-			// 		} else {
-			// 			this.$message({
-			// 				message: res.data.message,
-			// 				type: 'warning'
-			// 			});
-			// 		}
-			// 	}).catch(err => {
-			// 		this.$message({
-			// 			message: '错误',
-			// 			type: 'warning'
-			// 		});
-			// 	})
-			// },
-			handleSizeChange(val) {
-				console.log(`每页 ${val} 条`);
-			},
-			handleCurrentChange(val) {
-				console.log(`当前页: ${val}`);
-			},
-			urlParse() { //格式化url
-				var urlparmas = URL.parse('http://localhost:3000/index?id=3', true)
-				console.log(urlparmas.query)
+				
 			},
 			// 获取表格选中时的数据
 			selectRow(val) {
 				this.selectlistRow = val
-			},
-			// 增加行
-			addRow() {
-				var list = {
-					rowNum: this.rowNum,
-					post_id: [],
-					require_des: '',
-					remark: ''
-				};
-				this.tableData.unshift(list)
-				this.rowNum += 1;
 			},
 			// 删除选中行
 			delData() {
@@ -361,7 +213,6 @@
 		created() {
 			var that = this
 			that.getUserList()
-			that.urlParse()
 		}
 	}
 </script>

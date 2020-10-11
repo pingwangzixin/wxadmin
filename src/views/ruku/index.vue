@@ -84,7 +84,7 @@
 		</el-table>
 		<!-- 弹窗 -->
 		<el-dialog title="新增货物" :visible.sync="dialogFormVisible">
-		  <el-form :model="form">
+		  <el-form :inline="true" :model="form">
 		    <el-form-item label="合同编号">
 		      <el-input v-model="form.hetongnum" autocomplete="off"></el-input>
 		    </el-form-item>
@@ -158,62 +158,12 @@
 					console.log(res)
 				})
 			},
-			handleCreate() { //新增患者
+			handleCreate() { //新增
 			
-			
-			},
-			// getList() { /*** 获取患者列表*/
-			// 	this.listLoading = true
-			// 	for (let key in this.listQuery) {
-			// 		if (this.listQuery[key] == '') {
-			// 			delete this.listQuery[key]
-			// 		}
-			// 	}
-			// 	this.$http.post(this.url.getUserList, this.listQuery).then(function(res) {
-			// 		console.log(res)
-			// 	})
-			// 	axios.post(baseUrl() + 'user/patientList', this.listQuery).then(res => {
-			// 		if (res.data.code === 200) {
-			// 			this.list = res.data.data.records
-			// 			this.listLoading = false;
-			// 			this.total = res.data.data.total
-			// 		} else {
-			// 			this.$message({
-			// 				message: res.data.message,
-			// 				type: 'warning'
-			// 			});
-			// 		}
-			// 	}).catch(err => {
-			// 		this.$message({
-			// 			message: '错误',
-			// 			type: 'warning'
-			// 		});
-			// 	})
-			// },
-			handleSizeChange(val) {
-				console.log(`每页 ${val} 条`);
-			},
-			handleCurrentChange(val) {
-				console.log(`当前页: ${val}`);
-			},
-			urlParse() { //格式化url
-				var urlparmas = URL.parse('http://localhost:3000/index?id=3', true)
-				console.log(urlparmas.query)
 			},
 			// 获取表格选中时的数据
 			selectRow(val) {
 				this.selectlistRow = val
-			},
-			// 增加行
-			addRow() {
-				var list = {
-					rowNum: this.rowNum,
-					post_id: [],
-					require_des: '',
-					remark: ''
-				};
-				this.tableData.unshift(list)
-				this.rowNum += 1;
 			},
 			// 删除选中行
 			delData() {
@@ -238,7 +188,6 @@
 		created() {
 			var that = this
 			that.getUserList()
-			that.urlParse()
 		}
 	}
 </script>
