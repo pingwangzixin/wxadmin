@@ -1,5 +1,22 @@
 import { baseUrl} from './baseUrl.js'
 export default {
-	getUserList:baseUrl() +'user/patientList', //获取用户列表接口
-	getUserInfo:baseUrl() +'user/patientDetails'//获取用户详情接口
+  //入库接口
+	getUserList:baseUrl() +'inb/list',
+  getUserList:baseUrl() +'inb/info',
+  getUserList:baseUrl() +'inb/edit',
+  getUserList:baseUrl() +'inb/add',
+  getUserList:baseUrl() +'inb/delete',
+  //出库接口
+  getUserList:baseUrl() +'outb/list',
+  getUserList:baseUrl() +'outb/info',
+  getUserList:baseUrl() +'outb/edit',
+  getUserList:baseUrl() +'outb/add',
+  getUserList:baseUrl() +'outb/delete',
+  //库存接口
+  getUserList:baseUrl() +'stock/list',
+  getUserList:baseUrl() +'stock/info',
+  getUserList:baseUrl() +'stock/edit',
+  getUserList:baseUrl() +'stock/add',
+  getUserList:baseUrl() +'stock/delete'
+
 }
