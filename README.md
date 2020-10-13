@@ -19,13 +19,20 @@ npm run build --report
 ```
 
 # 接口地址写在src/utils/interface.js文件中
-调用接口
+调用接口post写法：
 this.$http.post(this.url.getUserList,this.listQuery).then(function(res){
 	console.log(res)
 	//this.url.getUserList是接口地址
 	//this.listQuery是参数
 })
-
+调用接口get写法：
+this.$http.get(this.url.getUserInfo, {
+	params: {
+		'id': 21
+	}
+}).then(function(res) {
+	console.log(res)
+})
 #页面写在src/views文件夹下
 ```
 

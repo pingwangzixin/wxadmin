@@ -158,6 +158,15 @@
 					console.log(res)
 				})
 			},
+			getUserInfo(){
+				this.$http.get(this.url.getUserInfo, {
+					params: {
+						'id': 21
+					}
+				}).then(function(res) {
+					console.log(res)
+				})
+			},
 			handleCreate() { //新增
 			
 			},
@@ -188,6 +197,7 @@
 		created() {
 			var that = this
 			that.getUserList()
+			that.getUserInfo()
 		}
 	}
 </script>
