@@ -86,37 +86,37 @@
 		<el-dialog title="新增货物" :visible.sync="dialogFormVisible">
 		  <el-form :inline="true" :model="form">
 		    <el-form-item label="合同编号">
-		      <el-input v-model="form.hetongnum" autocomplete="off"></el-input>
+		      <el-input v-model="form.ccode" autocomplete="off"></el-input>
 		    </el-form-item>
 		    <el-form-item label="商品编码">
-		      <el-input v-model="form.shangpinnum" autocomplete="off"></el-input>
+		      <el-input v-model="form.code" autocomplete="off"></el-input>
 		    </el-form-item>
 			<el-form-item label="产品名称">
-			  <el-input v-model="form.chanpinname" autocomplete="off"></el-input>
+			  <el-input v-model="form.name" autocomplete="off"></el-input>
 			</el-form-item>
 			<el-form-item label="规格型号">
-			  <el-input v-model="form.guige" autocomplete="off"></el-input>
+			  <el-input v-model="form.format" autocomplete="off"></el-input>
 			</el-form-item>
 			<el-form-item label="单价">
 			  <el-input v-model="form.price" autocomplete="off"></el-input>
 			</el-form-item>
 			<el-form-item label="入库数量">
-			  <el-input v-model="form.rukunum" autocomplete="off"></el-input>
+			  <el-input v-model="form.qty" autocomplete="off"></el-input>
 			</el-form-item>
 			<el-form-item label="单位">
-			  <el-input v-model="form.danwei" autocomplete="off"></el-input>
+			  <el-input v-model="form.unit" autocomplete="off"></el-input>
 			</el-form-item>
 			<el-form-item label="金额">
-			  <el-input v-model="form.jiner" autocomplete="off"></el-input>
+			  <el-input v-model="form.sump" autocomplete="off"></el-input>
 			</el-form-item>
 			<el-form-item label="供应商名称">
-			  <el-input v-model="form.gongyingname" autocomplete="off"></el-input>
+			  <el-input v-model="form.support" autocomplete="off"></el-input>
 			</el-form-item>
 			<el-form-item label="入库人">
-			  <el-input v-model="form.rukuren" autocomplete="off"></el-input>
+			  <el-input v-model="form.person" autocomplete="off"></el-input>
 			</el-form-item>
 			<el-form-item label="备注">
-			  <el-input v-model="form.beizhu" autocomplete="off"></el-input>
+			  <el-input v-model="form.remark" autocomplete="off"></el-input>
 			</el-form-item>
 		  </el-form>
 		  <div slot="footer" class="dialog-footer">

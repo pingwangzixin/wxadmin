@@ -1,6 +1,6 @@
 export function baseUrl() {
   console.log(process.env.NODE_ENV)
-  return process.env.NODE_ENV == 'development'? '/api/' : 'https://ysxs-patient.beta.microzan.com.cn/api/'
+  return process.env.NODE_ENV == 'development'? '/api/' : 'http://localhost:8083/'
 }
 
 export const loadStyle = url => {
